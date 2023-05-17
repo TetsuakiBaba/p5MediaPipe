@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - MediaPipe HandLandmarker Task for web</title>
+  <title>p5MediaPipeHands</title>
 
 </head>
-<body>
-
-<script src="./js/drawing_utils.js" crossorigin="anonymous"></script>
-<script src="./js/hands.js" crossorigin="anonymous"></script>
-<script src="./js/p5.js"></script>
-<script src="./js/sketch.js"></script>
 
 <body>
-  <section id="demos" class="invisible">
-    <h2>MediaPipe Starter: hands</h2>
-    <p>by Tetsuaki Baba</p>
-    <div id="liveView" class="videoView">
-      <button id="webcamButton">
-        ENABLE WEBCAM
-      </button>
-      <div style="position: relative;">
-        <video id="webcam" style="position: abso" autoplay playsinline></video>
-        <canvas class="output_canvas" id="output_canvas" style="position: absolute; left: 0px; top: 0px;"></canvas>
-        <div id="canvas" style="position:absolute;left:0px;top:0px">
+
+
+  <body>
+    <section id="demos" class="invisible">
+      <h2>p5MediaPipeHands</h2>
+      <p>by Tetsuaki Baba</p>
+      <div id="liveView" class="videoView">
+        <button id="webcamButton">
+          ENABLE WEBCAM
+        </button>
+        <div style="position: relative;">
+          <video id="webcam" style="position:absolute" autoplay playsinline></video>
+          <div id="canvas" style="position:absolute;left:0px;top:0px">
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-<!-- partial -->
-  <script type="module" src="./script.js"></script>
+    </section>
 
-</body>
+    <!-- include js libraries -->
+    <script src="./js/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="./js/hands.js" crossorigin="anonymous"></script>
+    <script src="./js/p5.js"></script>
+    <script src="./js/sketch.js"></script>
+    <script type="module" src="./js/script.js"></script>
+
+  </body>
+
 </html>

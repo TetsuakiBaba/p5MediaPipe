@@ -9,7 +9,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // import { HandLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
-import { HandLandmarker, FilesetResolver } from "./node_modules/@mediapipe/tasks-vision/vision_bundle.js";
+import { HandLandmarker, FilesetResolver } from "../node_modules/@mediapipe/tasks-vision/vision_bundle.js";
 const demosSection = document.getElementById("demos");
 let handLandmarker = undefined;
 let runningMode = "IMAGE";

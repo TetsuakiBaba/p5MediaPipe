@@ -4,12 +4,9 @@ function setup() {
   let p5canvas = createCanvas(400, 400);
   p5canvas.parent('#canvas');
 
+  // お手々が見つかると以下の関数が呼び出される．resultsに検出結果が入っている．
   gotHands = function (results) {
     hand_results = results;
-    if (results.landmarks) {
-      for (const landmarks of results.landmarks) {
-      }
-    }
     adjustCanvas();
   }
 }
@@ -18,11 +15,16 @@ function draw() {
   // 描画処理
   clear();  // これを入れないと下レイヤーにあるビデオが見えなくなる
 
+  // 各頂点座標を表示する
+  // 各頂点座標の位置と番号の対応は以下のURLを確認
+  // https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
   if (hand_results) {
     if (hand_results.landmarks) {
       for (const landmarks of hand_results.landmarks) {
         for (let landmark of landmarks) {
-          circle(landmark.x * width, landmark.y * height, 20);
+          noStroke();
+          fill(100, 150, 210);
+          circle(landmark.x * width, landmark.y * height, 10);
         }
       }
     }
