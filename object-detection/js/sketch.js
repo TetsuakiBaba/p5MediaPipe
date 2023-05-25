@@ -21,11 +21,10 @@ function setup() {
 function draw() {
     clear();
     if (results) {
-        let index = 0;
+
         console.log(results.detections);
         for (let detection of results.detections) {
-            index = detection.categories[0].index;
-
+            let index = detection.categories[0].index;
             let bb = detection.boundingBox;
             let name = detection.categories[0].categoryName;
             let score = detection.categories[0].score;
@@ -47,7 +46,7 @@ function draw() {
             noStroke();
             fill(255);
             textAlign(LEFT, CENTER);
-            text(`${name} - ${score.toFixed(2)}`, bb.originX + 10, bb.originY - 10);
+            text(`[${index}] ${name} - ${score.toFixed(2)}`, bb.originX + 10, bb.originY - 10);
             index++;
         }
     }
