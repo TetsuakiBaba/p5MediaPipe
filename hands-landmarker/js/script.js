@@ -10,7 +10,7 @@
 // limitations under the License.
 // import { HandLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
 import { HandLandmarker, FilesetResolver } from "./vision_bundle.js";
-const demosSection = document.getElementById("demos");
+document.getElementById("message").innerHTML = "Loading model...";
 let handLandmarker = undefined;
 let runningMode = "IMAGE";
 let enableWebcamButton;
@@ -28,7 +28,7 @@ const createHandLandmarker = async () => {
         runningMode: runningMode,
         numHands: 2
     });
-    demosSection.classList.remove("invisible");
+    document.getElementById("message").innerHTML += "done";
 };
 createHandLandmarker();
 /********************************************************************

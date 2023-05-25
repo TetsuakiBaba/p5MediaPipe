@@ -3,24 +3,41 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>object_tracking.p5Mediapipe</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>p5Mediapipe Object Detection</title>
+
+  <style>
+    video {
+      clear: both;
+      display: block;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+    }
+
+    section {
+      opacity: 1;
+      transition: opacity 500ms ease-in-out;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Demo: Webcam continuous detection</h1>
-  <section id="demos" class="invisible">
-    <div id="liveView" class="videoView">
-      <button id="webcamButton">
-        ENABLE WEBCAM
-      </button>
-      <div style="position: relative;">
-        <video id="webcam" style="position:absolute" autoplay playsinline></video>
-        <div id="canvas" style="position:absolute;left:0px;top:0px">
-        </div>
-      </div>
+
+  <h1 invisible>Object Detection</h1>
+  <p id="message"></p>
+
+  <button id="webcamButton">
+    ENABLE WEBCAM
+  </button>
+
+  <div style="position: relative;">
+    <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto;" autoplay playsinline></video>
+    <div id="canvas" style="position:absolute;left:0px;top:0px">
     </div>
-  </section>
+  </div>
+
+
+
   <!-- partial -->
   <script type="module" src="./js/script.js"></script>
   <script src="./js/p5.js"></script>

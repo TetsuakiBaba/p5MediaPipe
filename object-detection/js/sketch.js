@@ -8,11 +8,18 @@ function setup() {
         results = _results;
         strokeWeight(5)
         let video_width = document.querySelector('#webcam').videoWidth;
+        let video_height = document.querySelector('#webcam').videoHeight;
         // 取得したboundingBoxの値を現在のcanvas描画とあわせる前処理
         for (let d of results.detections) {
             let bb = d.boundingBox;
-            bb.originX = video_width - bb.originX - bb.width;
-            bb.originY = bb.originY;
+            let ratio = {
+                x: width / video_width,
+                y: height / video_height
+            }
+            bb.originX = ratio.x * (video_width - bb.originX - bb.width);
+            bb.originY = ratio.y * bb.originY;
+            bb.width *= ratio.x;
+            bb.height *= ratio.y;
         }
         adjustCanvas();
     }

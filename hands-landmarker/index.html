@@ -3,28 +3,25 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>p5MediaPipeHands</title>
-
+  <title>p5MediaPipeHands Hands Landmarker</title>
 </head>
 
 <body>
 
 
   <body>
-    <section id="demos" class="invisible">
-      <h2>p5MediaPipeHands</h2>
-      <p>by Tetsuaki Baba</p>
-      <div id="liveView" class="videoView">
-        <button id="webcamButton">
-          ENABLE WEBCAM
-        </button>
-        <div style="position: relative;">
-          <video id="webcam" style="position:absolute" autoplay playsinline></video>
-          <div id="canvas" style="position:absolute;left:0px;top:0px">
-          </div>
-        </div>
+    <h1>Hands Landmarker</h1>
+    <p id="message"></p>
+
+
+    <button id="webcamButton">
+      ENABLE WEBCAM
+    </button>
+    <div style="position: relative;">
+      <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto" autoplay playsinline></video>
+      <div id="canvas" style="position:absolute;left:0px;top:0px">
       </div>
-    </section>
+    </div>
 
     <!-- include js libraries -->
     <script src="./js/drawing_utils.js" crossorigin="anonymous"></script>
