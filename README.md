@@ -1,5 +1,10 @@
 # p5MediaPipe
-p5.jsでMediapipe（2023.5以降の新型モデル）を利用するときに，サクッと始められるサンプル集
+easy to go mediapipe samples with p5.js!!
+
+## Examples
+* hands-landmarker
+* object-detection
 
 ## Reference
-* https://developers.google.com/mediapipe
+* mediapipe by Google: https://developers.google.com/mediapipe
+* p5.js by processing foundation: https://p5js.org/

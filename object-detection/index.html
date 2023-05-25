@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>object_tracking.p5Mediapipe</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h1>Demo: Webcam continuous detection</h1>
+  <section id="demos" class="invisible">
+    <div id="liveView" class="videoView">
+      <button id="webcamButton">
+        ENABLE WEBCAM
+      </button>
+      <div style="position: relative;">
+        <video id="webcam" style="position:absolute" autoplay playsinline></video>
+        <div id="canvas" style="position:absolute;left:0px;top:0px">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- partial -->
+  <script type="module" src="./js/script.js"></script>
+  <script src="./js/p5.js"></script>
+  <script src="./js/sketch.js"></script>
+
+</body>
+
+</html>
