@@ -15,7 +15,7 @@ const initializeObjectDetector = async () => {
         runningMode: runningMode
     });
     enableCam();
-
+    document.querySelector('#loading').style.display = 'none';
 };
 initializeObjectDetector();
 
