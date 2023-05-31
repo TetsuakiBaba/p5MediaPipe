@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>webapp template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <!-- For old IEs -->
+  <link rel="shortcut icon" href="./images/favicon.ico" />
+  <!-- For new browsers - multisize ico  -->
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="./images/favicon.ico">
+  <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="152x152" href="./images/favicon-152-precomposed.png">
+  <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="144x144" href="./images/favicon-144-precomposed.png">
+  <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="120x120" href="./images/favicon-120-precomposed.png">
+  <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="114x114" href="./images/favicon-114-precomposed.png">
+  <!-- For iPhone 6+ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon-180-precomposed.png">
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon" sizes="72x72" href="./images/favicon-72-precomposed.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon" sizes="57x57" href="./images/favicon-57.png">
+  <!-- For Old Chrome -->
+  <link rel="icon" sizes="32x32" href="./images/favicon-32.png">
+  <!-- For IE10 Metro -->
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="./images/favicon-144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Chrome for Android -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" sizes="192x192" href="./images/favicon-192.png">
+
+  <style>
+    video {
+      clear: both;
+      display: block;
+      /* transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg); */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <div class="row">
+      <nav class="navbar navbar-dark bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+              <path
+                d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+            </svg> <strong>Web App Template</strong></a>
+          <span class="text-white" style="font-size:0.5rem" id="version"></span>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <div style="position:relative;" class="p-0 m-0">
+        <div id="render">
+          <video id="webcam" style="position:relative;left:0px;top:0px;width:100%;height:auto;" autoplay
+            playsinline></video>
+          <div id="canvas" style="position:absolute;left:0px;top:0px" onclick="toggleCameraPlay();">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="d-grid  col-12 mx-auto">
+        <div class="alert alert-secondary" role="alert">
+          <label for="customRange1" class="form-label">confidence threshold: <span
+              id="confidence_threshold">0.35</span></label>
+          <input type="range" class="form-range" id="input_confidence_threshold" min="0.05" max="1.0" value="0.35"
+            step="0.01">
+        </div>
+
+
+        <button onclick="share();" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share"
+            viewBox="0 0 16 16">
+            <path
+              d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+          </svg>
+          Share
+        </button>
+
+        <hr>
+
+
+
+        <button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle"
+            viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+          </svg>
+          使い方
+        </button>
+
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <p>
+              このアプリは、ブラウザ上で動作する物体検出アプリです．オリジナルの物体検出モデルを作成し，それをブラウザ上で動作させることができます．Shareボタンを押すと撮影した画像をSNS等に簡単に共有することができます．またカメラ画像をタップすると画像を一時停止することができます
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+  <!-- partial -->
+  <script src="./js/html2canvas.min.js"></script>
+  <script type="module" src="./js/script.js"></script>
+  <script src="./js/p5.js"></script>
+  <script src="./js/sketch.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
