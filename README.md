@@ -1,5 +1,5 @@
 # p5MediaPipe
-easy to go mediapipe samples with p5.js!!
+Easy to go mediapipe samples with p5.js!!
 
 ## Examples
 * hands-landmarker : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker/" target="_blank">DEMO</a>
