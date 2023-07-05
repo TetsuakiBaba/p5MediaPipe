@@ -7,7 +7,12 @@ Easy to go mediapipe samples with p5.js!!
 target="_blank">DEMO</a>
 * object-detection-mobile-web-app-template : <a href="https://tetsuakibaba.github.io/p5MediaPipe/object-detection-mobile-web-app-template/" 
 target="_blank">DEMO</a>
-* gesture-recognition : <a href="https://tetsuakibaba.github.io/p5MediaPipe/gesture-recognition/" target="_blank">TBA</a>
+* gesture-recognition : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker-gesture-recognition/" target="_blank">DEMO</a>
+* image classification: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-classification/" 
+target="_blank">DEMO</a>
+* image segmentation: TBA
+* face landmark detection: TBA
+* pose landmark detection: TBA
 
 ## Reference
 * mediapipe by Google: https://developers.google.com/mediapipe
