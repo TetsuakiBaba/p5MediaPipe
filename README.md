@@ -10,7 +10,8 @@ target="_blank">DEMO</a>
 * gesture-recognition : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker-gesture-recognition/" target="_blank">DEMO</a>
 * image classification: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-classification/" 
 target="_blank">DEMO</a>
-* image segmentation: TBA
+* image segmentation: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-segmentation/" 
+target="_blank">DEMO</a>
 * face landmark detection: TBA
 * pose landmark detection: TBA
 

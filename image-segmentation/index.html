@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>p5MediaPipe Image Segmentation</title>
+</head>
+
+<body>
+
+
+  <body>
+    <h1>image segmentation</h1>
+    <p id="message"></p>
+
+    <button id="webcamButton">
+      ENABLE WEBCAM
+    </button>
+    <div style="position: relative;">
+      <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto" autoplay playsinline></video>
+      <div id="canvas" style="position:absolute;left:0px;top:0px">
+      </div>
+    </div>
+
+    <!-- include js libraries -->
+    <script src="./js/p5.js"></script>
+    <script src="./js/sketch.js"></script>
+    <script type="module" src="./js/script.js"></script>
+
+  </body>
+
+</html>
