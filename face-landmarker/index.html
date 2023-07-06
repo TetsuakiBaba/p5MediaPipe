@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>p5MediaPipeHands Face Landmarker</title>
+</head>
+
+<body>
+
+
+  <body>
+    <h1>Face Landmarker</h1>
+    <p id="message"></p>
+
+
+    <button id="webcamButton" disabled>
+      ENABLE WEBCAM
+    </button>
+    <div style="position: relative;">
+      <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto" autoplay playsinline></video>
+      <div id="canvas" style="position:absolute;left:0px;top:0px">
+      </div>
+    </div>
+
+    <!-- include js libraries -->
+    <script src="./js/p5.js"></script>
+    <script src="./js/sketch.js"></script>
+    <script type="module" src="./js/script.js"></script>
+
+  </body>
+
+</html>
