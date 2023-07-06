@@ -13,7 +13,7 @@ target="_blank">DEMO</a>
 * image segmentation: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-segmentation/" 
 target="_blank">DEMO</a>
 * face landmark detection: TBA
-* pose landmark detection: TBA
+* pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
 
 ## Reference
 * mediapipe by Google: https://developers.google.com/mediapipe
