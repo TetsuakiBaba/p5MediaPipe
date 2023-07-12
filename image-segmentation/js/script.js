@@ -30,7 +30,7 @@ const createImageSegmenter = async () => {
         baseOptions: {
             //modelAssetPath: `./models/deeplab_v3.tflite`,
             modelAssetPath: `./models/selfie_segmenter_landscape.tflite`,
-            delegate: "GPU"
+            delegate: "CPU"
         },
         runningMode: runningMode,
         outputCategoryMask: true,

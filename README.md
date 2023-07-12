@@ -20,4 +20,6 @@ target="_blank">DEMO</a>
 ## Reference
 * mediapipe by Google: https://developers.google.com/mediapipe
 * p5.js by processing foundation: https://p5js.org/
+
+## thanks
 * fauxelsによる動画: https://www.pexels.com/ja-jp/video/3253739/
