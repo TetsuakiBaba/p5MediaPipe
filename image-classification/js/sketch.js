@@ -21,7 +21,7 @@ function draw() {
   if (classification_results) {
     let name = classification_results.classifications[0].categories[0].categoryName;
     let score = classification_results.classifications[0].categories[0].score;
-    console.log(classification_results.classifications[0].categories[0]);
+    // console.log(classification_results.classifications[0].categories[0]);
     textSize(48);
     text(`${name}: ${(score * 100).toFixed(0)} %`, 20, 64);
   }
