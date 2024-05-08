@@ -40,6 +40,7 @@ const createImageSegmenter = async () => {
     labels = imageSegmenter.getLabels();
     console.log(labels);
     document.getElementById("message").innerHTML += "done";
+    document.querySelector('#webcamButton').disabled = false;
 };
 createImageSegmenter();
 

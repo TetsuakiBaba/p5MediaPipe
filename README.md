@@ -16,11 +16,10 @@ target="_blank">DEMO</a>
 * object-detection-mobile-web-app-template : <a href="https://tetsuakibaba.github.io/p5MediaPipe/object-detection-mobile-web-app-template/" 
 target="_blank">DEMO</a>
 * gesture-recognition : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker-gesture-recognition/" target="_blank">DEMO</a>
-  * Only this example uses vision_bundle.js of v0.10.2 because vision_bundle.js of v0.10.13 causes an error.
 * image classification: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-classification/" 
 target="_blank">DEMO</a>
-* image segmentation: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-segmentation/" 
-target="_blank">DEMO</a>
+* image segmentation: <a href="https://tetsuakibaba.github.io/p5MediaPipe/image-segmentation/" target="_blank">DEMO</a>
+  * Only this example uses vision_bundle.js of v0.10.2 because vision_bundle.js of v0.10.13 causes an error.
 * face landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/face-landmarker/" target="_blank">DEMO</a>
 * pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
 

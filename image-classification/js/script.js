@@ -35,6 +35,7 @@ const createImageClassifier = async () => {
 
 // Show demo section now model is ready to use.
 document.getElementById("message").innerHTML = "Loading model...done.";
+document.querySelector('#webcamButton').disabled = false;
 
 createImageClassifier();
 /********************************************************************

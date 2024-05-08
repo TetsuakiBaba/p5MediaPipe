@@ -29,6 +29,7 @@ const createHandLandmarker = async () => {
         numHands: 2
     });
     document.getElementById("message").innerHTML += "done";
+    document.querySelector('#webcamButton').disabled = false;
 };
 createHandLandmarker();
 /********************************************************************

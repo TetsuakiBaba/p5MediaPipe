@@ -16,6 +16,7 @@ const initializeObjectDetector = async () => {
         runningMode: runningMode
     });
     document.getElementById("message").innerHTML += "done.";
+    document.querySelector('#webcamButton').disabled = false;
 };
 initializeObjectDetector();
 
