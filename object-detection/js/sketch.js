@@ -28,8 +28,6 @@ function setup() {
 function draw() {
     clear();
     if (results) {
-
-        console.log(results.detections);
         for (let detection of results.detections) {
             let index = detection.categories[0].index;
             let bb = detection.boundingBox;

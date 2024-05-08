@@ -20,7 +20,7 @@ let webcamRunning = false;
 // get everything needed to run.
 const createGestureRecognizer = async () => {
     const vision = await FilesetResolver.forVisionTasks(
-        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
+        "./wasm"
     );
     gestureRecognizer = await GestureRecognizer.createFromOptions(vision, {
         baseOptions: {
