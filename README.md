@@ -5,6 +5,8 @@ Easy to go mediapipe samples with p5.js!!
 
 To make it easier to handle mediapipe with p5, I have downloaded the necessary asm and js files for each example. p5MediaPipe branches are created for each version of mediapipe.
 
+p5MediaPipe stores all necessary libraries in the project file for implementation in standalone applications.
+
 ## Version
 * mediapipe@v0.10.14
 * https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/
@@ -24,6 +26,7 @@ target="_blank">DEMO</a>
 * pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
 
 ## How to update mediapipe version
+If a newer version of mediapipe has been released, you can update the mediapipe version for each project with the following command. If necessary, replace "update" with "install" in npm.
 ```
 npm update @mediapipe/tasks-vision
 sh copy_files.sh
