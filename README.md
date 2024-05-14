@@ -6,8 +6,8 @@ Easy to go mediapipe samples with p5.js!!
 To make it easier to handle mediapipe with p5, I have downloaded the necessary asm and js files for each example. p5MediaPipe branches are created for each version of mediapipe.
 
 ## Version
-* mediapipe@v0.10.13
-* https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.13/
+* mediapipe@v0.10.14
+* https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/
 
 ## Examples
 * hands-landmarker : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker/" target="_blank">DEMO</a>
@@ -22,6 +22,12 @@ target="_blank">DEMO</a>
   * Only this example uses vision_bundle.js of v0.10.2 because vision_bundle.js of v0.10.13 causes an error.
 * face landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/face-landmarker/" target="_blank">DEMO</a>
 * pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
+
+## How to update mediapipe version
+```
+npm update @mediapipe/tasks-vision
+sh copy_files.sh
+```
 
 
 ## Reference
