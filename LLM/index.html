@@ -26,6 +26,11 @@ limitations under the License. -->
         <h1 class="display-1">LLM with p5.js</h1>
         <div class="row">
             <div class="col-md-6">
+                <!-- ローカルファイルのモデルファイルを読み込むための select model ボタンを作成 -->
+                <p>
+                    <input type="file" accept=".bin" id="load_model">
+                </p>
+
                 Input:<br />
                 <textarea id="input" style="height: 100px; width: 100%"></textarea><br />
                 <input type="button" id="submit" value="Get Response" disabled /><br />

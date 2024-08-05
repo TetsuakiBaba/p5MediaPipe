@@ -23,6 +23,22 @@ const submit = document.getElementById('submit');
 const modelFileName = 'gemma-2b-it-gpu-int4.bin'; /* Update the file name */
 // const modelFileName = 'gemma-1.1-7b-it-gpu-int8.bin'; /* Update the file name */
 
+
+document.querySelector('#load_model').addEventListener('change', function () {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const arrayBuffer = e.target.result;
+        const blob = new Blob([arrayBuffer], { type: 'application/octet-stream' });
+        const blobUrl = URL.createObjectURL(blob);
+        runDemo(blobUrl);
+    };
+
+    // If you want to read the file as text, you can just call reader.readAsText('gemma-2b-it-gpu-int4.bin'); instead of reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(file);
+});
+
+
 /**
  * Display newly generated partial results to the output text box.
  */
@@ -38,10 +54,11 @@ function displayPartialResults(partialResults, complete) {
     }
 }
 
+
 /**
  * Main function to run LLM Inference.
  */
-async function runDemo() {
+async function runDemo(model_file_path) {
     const genaiFileset = await FilesetResolver.forGenAiTasks(
         'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-genai/wasm');
     let llmInference;
@@ -55,7 +72,7 @@ async function runDemo() {
     submit.value = 'Loading the model...'
     LlmInference
         .createFromOptions(genaiFileset, {
-            baseOptions: { modelAssetPath: modelFileName },
+            baseOptions: { modelAssetPath: model_file_path },
             maxTokens: 512,  // The maximum number of tokens (input tokens + output
             //                  // tokens) the model handles.
             randomSeed: 1,   // The random seed used during text generation.
@@ -76,4 +93,3 @@ async function runDemo() {
         });
 }
 
-runDemo();
