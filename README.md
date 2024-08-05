@@ -26,8 +26,8 @@ target="_blank">DEMO</a>
 * pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
 
 ## Experimental
-* LLM Inference: try it on your local machine
-  * This example is an experimental implementation of LLM Inference. The model(https://www.kaggle.com/models/google/gemma/tfLite/gemma-1.1-2b-it-gpu-int4) is not included in the project file, so you need to download the model from the official site and place it in the project file.
+* LLM Inference: <a href="https://tetsuakibaba.github.io/p5MediaPipe/LLM/" target="_blank">DEMO</a>
+  * This example is an experimental implementation of LLM Inference. The model such as gemma-1.1-2b-it-gpu-int4.bin (https://www.kaggle.com/models/google/gemma/tfLite/gemma-1.1-2b-it-gpu-int4),  is not included in the project file, so you need to download the model from the official site and load it.
 ![](./LLM/sample.png)
 
 ## How to update mediapipe version
