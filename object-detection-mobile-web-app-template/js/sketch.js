@@ -1,17 +1,20 @@
 let version = `
-last modified: 2023/06/01 01:34:31
+last modified: 2024/08/06 09:39:01
 `
 var results;
+let cam = null;
+let p5canvas = null;
+
 function setup() {
-    let p5canvas = createCanvas(400, 400);
+    p5canvas = createCanvas(640, 480);
     p5canvas.parent('#canvas');
 
     // お手々が見つかると以下の関数が呼び出される．resultsに検出結果が入っている．
     gotDetections = function (_results) {
         results = _results;
         strokeWeight(5)
-        let video_width = document.querySelector('#webcam').videoWidth;
-        let video_height = document.querySelector('#webcam').videoHeight;
+        let video_width = 640;
+        let video_height = 480;
         // 取得したboundingBoxの値を現在のcanvas描画とあわせる前処理
         for (let d of results.detections) {
             let bb = d.boundingBox;
@@ -24,16 +27,35 @@ function setup() {
             bb.width *= ratio.x;
             bb.height *= ratio.y;
         }
-        adjustCanvas();
 
     }
 
     document.querySelector('#version').innerHTML = version;
+    startWebcam();
 }
+
+function startWebcam() {
+    // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
+    if (window.setCameraStreamToMediaPipe) {
+        cam = createCapture(VIDEO);
+        cam.hide();
+        cam.elt.onloadedmetadata = function () {
+            window.setCameraStreamToMediaPipe(cam.elt);
+        }
+        p5canvas.style('width', '100%');
+        p5canvas.style('height', 'auto');
+    }
+}
+
+
 
 function draw() {
 
-    clear();
+    background(127);
+    if (cam) {
+        image(cam, 0, 0, width, height);
+    }
+
     if (results) {
 
         for (let detection of results.detections) {
@@ -104,13 +126,6 @@ function getColorByIndex(index) {
 }
 
 
-function adjustCanvas() {
-    // Get an element by its ID
-    var element_webcam = document.getElementById('webcam');
-    resizeCanvas(element_webcam.clientWidth, element_webcam.clientHeight);
-    //console.log(element_webcam.clientWidth);
-}
-
 function share() {
     let element = document.getElementById('render');
     html2canvas(element).then(canvas => {
@@ -135,12 +150,13 @@ function share() {
     });
 }
 
+let is_playing = true;;
 function toggleCameraPlay() {
-    let element_video = document.querySelector('#webcam');
-    if (element_video.paused) {
-        element_video.play();
-    } else {
-        element_video.pause();
+    is_playing = !is_playing;
+    if (is_playing) {
+        cam.play();
     }
-
+    else {
+        cam.pause();
+    }
 }

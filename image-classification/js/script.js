@@ -9,13 +9,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // import { HandLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
+
 import { ImageClassifier, FilesetResolver } from "./vision_bundle.js";
-document.getElementById("message").innerHTML = "Loading model...";
 let imageClassifier = undefined;
 let classificationResult = undefined;
 let runningMode = "IMAGE";
-let enableWebcamButton;
-let webcamRunning = false;
+
 // Before we can use HandLandmarker class we must wait for it to finish
 // loading. Machine Learning models can be large and take a moment to
 // get everything needed to run.
@@ -31,54 +30,21 @@ const createImageClassifier = async () => {
         maxResults: 1,
         runningMode: runningMode
     });
+    document.querySelector('#button_webcam').disabled = false;
+    document.querySelector('#button_webcam').innerHTML = "Enable Webcam";
 }
-
-// Show demo section now model is ready to use.
-document.getElementById("message").innerHTML = "Loading model...done.";
-document.querySelector('#webcamButton').disabled = false;
-
 createImageClassifier();
-/********************************************************************
-// Demo 2: Continuously grab image from webcam stream and detect it.
-********************************************************************/
-const video = document.getElementById("webcam");
-const canvasElement = document.getElementById("canvas");
 
-// Check if webcam access is supported.
-const hasGetUserMedia = () => { var _a; return !!((_a = navigator.mediaDevices) === null || _a === void 0 ? void 0 : _a.getUserMedia); };
-// If webcam supported, add event listener to button for when user
-// wants to activate it.
-if (hasGetUserMedia()) {
-    enableWebcamButton = document.getElementById("webcamButton");
-    enableWebcamButton.addEventListener("click", enableCam);
+let video = null;
+export function setCameraStreamToMediaPipe(v) {
+    video = v;
+    video.addEventListener("loadeddata", predictWebcam);
+    video = v;
+
 }
-else {
-    console.warn("getUserMedia() is not supported by your browser");
-}
-// Enable the live webcam view and start detection.
-function enableCam(event) {
-    if (!imageClassifier) {
-        console.log("Wait! objectDetector not loaded yet.");
-        return;
-    }
-    if (webcamRunning === true) {
-        webcamRunning = false;
-        enableWebcamButton.innerText = "ENABLE PREDICTIONS";
-    }
-    else {
-        webcamRunning = true;
-        enableWebcamButton.innerText = "DISABLE PREDICTIONS";
-    }
-    // getUsermedia parameters.
-    const constraints = {
-        video: true
-    };
-    // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        video.srcObject = stream;
-        video.addEventListener("loadeddata", predictWebcam);
-    });
-}
+window.setCameraStreamToMediaPipe = setCameraStreamToMediaPipe;
+
+
 let lastVideoTime = -1;
 let results = undefined;
 
@@ -104,19 +70,8 @@ async function predictWebcam() {
 
         gotClassification(classificationResult);
     }
-
-
     const classifications = classificationResult.classifications;
-    //   webcamPredictions.className = "webcamPredictions";
-    //   webcamPredictions.innerText =
-    //     "Classification: " +
-    //     classifications[0].categories[0].categoryName +
-    //     "\n Confidence: " +
-    //     Math.round(parseFloat(classifications[0].categories[0].score) * 100) +
-    //     "%";
-
-    // Call this function again to keep predicting when the browser is ready.
-    if (webcamRunning === true) {
+    if (!video.paused) {
         window.requestAnimationFrame(predictWebcam);
     }
 

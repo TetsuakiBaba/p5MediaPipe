@@ -11,17 +11,10 @@
 
   <body>
     <h1>Face Landmarker</h1>
-    <p id="message"></p>
-
-
-    <button id="webcamButton" disabled>
-      ENABLE WEBCAM
+    <button id="button_webcam" disabled onclick="startWebcam();">
+      Model Loading...
     </button>
-    <div style="position: relative;">
-      <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto" autoplay playsinline></video>
-      <div id="canvas" style="position:absolute;left:0px;top:0px">
-      </div>
-    </div>
+    <div id="canvas"></div>
 
     <!-- include js libraries -->
     <script src="./js/p5.js"></script>

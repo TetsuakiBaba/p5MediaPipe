@@ -14,58 +14,22 @@ const initializeObjectDetector = async () => {
         scoreThreshold: 0.35,
         runningMode: runningMode
     });
-    enableCam();
     document.querySelector('#loading').style.display = 'none';
 };
 initializeObjectDetector();
 
-/********************************************************************
- // Demo 2: Continuously grab image from webcam stream and detect it.
- ********************************************************************/
-let video = document.getElementById("webcam");
-let enableWebcamButton;
+let video = null;
 
-// Check if webcam access is supported.
-function hasGetUserMedia() {
-    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-}
-// Keep a reference of all the child elements we create
-// so we can remove them easilly on each render.
-var children = [];
-// If webcam supported, add event listener to button for when user
-// wants to activate it.
-if (hasGetUserMedia()) {
-    // enableWebcamButton = document.getElementById("webcamButton");
-    // enableWebcamButton.addEventListener("click", enableCam);
-}
-else {
-    console.warn("getUserMedia() is not supported by your browser");
-}
-// Enable the live webcam view and start detection.
-async function enableCam(event) {
-    if (!objectDetector) {
-        console.log("Wait! objectDetector not loaded yet.");
-        return;
-    }
+export function setCameraStreamToMediaPipe(v) {
+    video = v;
+    video.addEventListener("loadeddata", predictWebcam);
+    video = v;
 
-    // getUsermedia parameters
-    const constraints = {
-        video: {
-            facingMode: 'environment'
-        }
-    };
-    // Activate the webcam stream.
-    navigator.mediaDevices
-        .getUserMedia(constraints)
-        .then(function (stream) {
-            video.srcObject = stream;
-            video.addEventListener("loadeddata", predictWebcam);
-        })
-        .catch((err) => {
-            console.error(err);
-            /* handle the error */
-        });
 }
+window.setCameraStreamToMediaPipe = setCameraStreamToMediaPipe;
+
+
+
 let lastVideoTime = -1;
 async function predictWebcam() {
     // if image mode is initialized, create a new classifier with video runningMode
@@ -90,7 +54,7 @@ document.querySelector('#input_confidence_threshold').addEventListener('change',
 function changedConfidenceThreshold(e) {
     objectDetector.setOptions(
         {
-            scoreThreshold: e.srcElement.value
+            scoreThreshold: parseFloat(e.srcElement.value)
         }
     )
     document.querySelector('#confidence_threshold').innerHTML = e.srcElement.value;
