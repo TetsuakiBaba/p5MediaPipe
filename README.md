@@ -3,6 +3,10 @@ Easy to go mediapipe samples with p5.js!!
 
 ![](./teaser.png)
 
+> [!NOTE] 
+> 従来のvideoタグにp5jsキャンバスを重畳する方式から、createCaptureでp5jsでのカメラキャプチャを行う方式に変更しました。この方式により、mediapipeのタスクをp5jsで簡単に実装できるようになりました。もし以前の方式を使いたい場合は、[v0.10.13](https://github.com/TetsuakiBaba/p5MediaPipe/tree/v0.10.13)を利用してください。The method of overlaying a p5js canvas on the conventional video tag has been changed to the method of capturing a camera with p5js using createCapture. This method makes it easy to implement mediapipe tasks with p5js. If you want to use the previous method, please use [v0.10.13](https://github.com/TetsuakiBaba/p5MediaPipe/tree/v0.10.13).
+
+
 To make it easier to handle mediapipe with p5, I have downloaded the necessary asm and js files for each example. p5MediaPipe branches are created for each version of mediapipe.
 
 p5MediaPipe stores all necessary libraries in the project file for implementation in standalone applications.
