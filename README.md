@@ -12,8 +12,8 @@ To make it easier to handle mediapipe with p5, I have downloaded the necessary a
 p5MediaPipe stores all necessary libraries in the project file for implementation in standalone applications.
 
 ## Version
-* mediapipe@v0.10.14
-* https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/
+* mediapipe@v0.10.18
+* https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/
 
 ## Examples
 * hands-landmarker : <a href="https://tetsuakibaba.github.io/p5MediaPipe/hands-landmarker/" target="_blank">DEMO</a>
@@ -39,6 +39,11 @@ If a newer version of mediapipe has been released, you can update the mediapipe 
 ```
 npm update @mediapipe/tasks-vision
 sh copy_files.sh
+```
+
+check installed mediapipe version
+```
+npm list @mediapipe/tasks-vision
 ```
 
 

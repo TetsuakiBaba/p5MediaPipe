@@ -12,6 +12,7 @@
 // const { ImageSegmenter, SegmentationMask, FilesetResolver } = vision;
 
 import vision from "./vision_bundle.js";
+// import { ImageSegmenter, SegmentationMask, FilesetResolver } from "./vision_bundle.js";
 const { ImageSegmenter, SegmentationMask, FilesetResolver } = vision;
 
 let imageSegmenter;

@@ -15,7 +15,8 @@ cp -r $SOURCE_DIR/wasm hands-landmarker/
 cp -r $SOURCE_DIR/wasm hands-landmarker-gesture-recognition/
 cp -r $SOURCE_DIR/wasm pose-landmarker/
 cp -r $SOURCE_DIR/wasm image-classification/
-#cp -r $SOURCE_DIR/wasm image-segmentation/
+# segmentはwasm入れ替えても問題ないがい，vision_bundle.jsとの整合性を踏まえてコピーしない
+# cp -r $SOURCE_DIR/wasm image-segmentation/
 cp -r $SOURCE_DIR/wasm object-detection/
 cp -r $SOURCE_DIR/wasm object-detection-mobile-web-app-template/
 
