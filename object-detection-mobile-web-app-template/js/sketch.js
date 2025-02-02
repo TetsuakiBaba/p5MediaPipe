@@ -1,5 +1,5 @@
 let version = `
-last modified: 2024/08/06 09:39:01
+last modified: 2025/02/02 16:42:22
 `
 var results;
 let cam = null;
@@ -12,16 +12,17 @@ function setup() {
     // お手々が見つかると以下の関数が呼び出される．resultsに検出結果が入っている．
     gotDetections = function (_results) {
         results = _results;
-        strokeWeight(5)
         let video_width = 640;
         let video_height = 480;
+        let ratio = {
+            x: width / video_width,
+            y: height / video_height
+        }
+        // console.log(canvas_width, canvas_height);
+        // console.log(ratio);
         // 取得したboundingBoxの値を現在のcanvas描画とあわせる前処理
         for (let d of results.detections) {
             let bb = d.boundingBox;
-            let ratio = {
-                x: width / video_width,
-                y: height / video_height
-            }
             bb.originX = ratio.x * bb.originX;
             bb.originY = ratio.y * bb.originY;
             bb.width *= ratio.x;
@@ -37,7 +38,18 @@ function setup() {
 function startWebcam() {
     // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
     if (window.setCameraStreamToMediaPipe) {
-        cam = createCapture(VIDEO);
+        //here
+        const camera_id = localStorage.getItem('cameraId');
+        const constraints = {
+            video: {
+                deviceId: camera_id,
+                facingMode: 'environment',
+                width: { max: 640 },
+                height: { max: 480 },
+                aspectRatio: { ideal: 4 / 3 }
+            }
+        };
+        cam = createCapture(constraints);
         cam.hide();
         cam.elt.onloadedmetadata = function () {
             window.setCameraStreamToMediaPipe(cam.elt);
@@ -86,11 +98,12 @@ function draw() {
             index++;
         }
     }
-    noFill();
-    noStroke();
-    rect(0, 0, 640, 480);
 
-    stroke(250);
+    // noFill();
+    // stroke(255, 100, 25);
+    // strokeWeight(50);
+    // rect(0, 0, width, height);
+
 }
 function getColorByIndex(index) {
     const colors = [
@@ -159,4 +172,32 @@ function toggleCameraPlay() {
     else {
         cam.pause();
     }
+}
+
+
+// カメラデバイスの切り替え
+document.getElementById('select_camera').addEventListener('change', changedCamera);
+function changedCamera() {
+    const selectCamera = document.getElementById('select_camera');
+    const constraints = {
+        video: {
+            deviceId: selectCamera.value,
+            facingMode: 'environment',
+            width: { max: 640 },
+            height: { max: 480 },
+            aspectRatio: { ideal: 4 / 3 }
+        }
+    };
+    // selectCamera.value をlocalStorageに保存
+    localStorage.setItem('cameraId', selectCamera.value);
+
+    // navigator.mediaDevices
+    //     .getUserMedia(constraints)
+    //     .then(function (stream) {
+    //         video.srcObject = stream;
+    //         video.addEventListener("loadeddata", predictWebcam);
+    //     })
+    //     .catch((err) => {
+    //         console.error(err);
+    //     });
 }

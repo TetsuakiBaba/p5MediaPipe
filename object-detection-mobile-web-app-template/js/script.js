@@ -32,6 +32,7 @@ window.setCameraStreamToMediaPipe = setCameraStreamToMediaPipe;
 
 let lastVideoTime = -1;
 async function predictWebcam() {
+    // 動画の場合は解像度は大きなサイズで渡しても640x480にリサイズされて結果が返ってくることに注意する。
     // if image mode is initialized, create a new classifier with video runningMode
     if (runningMode === "IMAGE") {
         runningMode = "VIDEO";
@@ -59,3 +60,45 @@ function changedConfidenceThreshold(e) {
     )
     document.querySelector('#confidence_threshold').innerHTML = e.srcElement.value;
 }
+
+async function listCameras() {
+    try {
+        const selectCamera = document.getElementById('select_camera');
+        navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                console.log(devices);
+                devices.forEach(device => {
+                    if (device.kind === 'videoinput') {
+                        const option = document.createElement('option');
+                        option.text = device.label || `camera ${selectCamera.length + 1}`;
+                        option.value = device.deviceId;
+                        // もし localStorage に cameraId が保存されていたら、それを選択状態にする
+                        const cameraId = localStorage.getItem('cameraId');
+                        if (cameraId === device.deviceId) {
+                            option.selected = true;
+                        }
+                        selectCamera.appendChild(option);
+                    }
+                });
+            });
+    } catch (err) {
+        console.error('Error accessing media devices.', err);
+    }
+}
+await listCameras();
+document.querySelector('#button_refresh_camera').addEventListener('click', async () => {
+    try {
+        // 仮のカメラアクセスをリクエストしてユーザーの許可を取得
+        const initialStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        // デバイス一覧を取得
+        document.querySelector('#select_camera').innerHTML = '';
+        await listCameras();
+        // ストリームを停止してカメラをクローズ
+        if (initialStream) {
+            initialStream.getTracks().forEach(track => track.stop());
+        }
+    } catch (err) {
+        console.error('Error accessing media devices.', err);
+    }
+})
+
