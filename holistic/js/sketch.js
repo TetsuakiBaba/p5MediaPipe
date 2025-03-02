@@ -6,7 +6,7 @@ function setupHolistic() {
   holistic = new Holistic({
     locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`
   });
-  console.log(holistic);
+
   holistic.setOptions({
     modelComplexity: 1,
     upperBodyOnly: true,
@@ -18,20 +18,24 @@ function setupHolistic() {
     minTrackingConfidence: 0.5
   });
   holistic.onResults(onResults);
-  document.querySelector('#button_webcam').disabled = false;
-  document.querySelector('#button_webcam').innerHTML = "Enable Webcam";
 }
 
 let p5canvas = null;
 function setup() {
   p5canvas = createCanvas(1280, 720);
   p5canvas.parent('#canvas');
+  p5canvas.style('width', '100%');
+  p5canvas.style('height', 'auto');
+
+  setupHolistic();
+  document.querySelector('#button_webcam').disabled = false;
+  document.querySelector('#button_webcam').innerHTML = "Enable Webcam";
+}
+
+function startWebcam() {
   capture = createCapture(VIDEO);
   capture.size(1280, 720);
   capture.hide();
-
-  p5canvas.style('width', '100%');
-  p5canvas.style('height', 'auto');
   setupHolistic();
 
   setInterval(() => {
@@ -42,10 +46,13 @@ function setup() {
       });
     }
   }, 1000 / 30);
+
+
 }
 
 function draw() {
   // draw camera capture
+  if (!capture) return;
   image(capture, 0, 0, width, height);
 
   {
@@ -113,3 +120,4 @@ function onResults(results) {
 // p5.js がグローバル関数として認識できるよう登録
 window.setup = setup;
 window.draw = draw;
+window.startWebcam = startWebcam;
