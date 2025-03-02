@@ -29,7 +29,12 @@ target="_blank">DEMO</a>
 * face landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/face-landmarker/" target="_blank">DEMO</a>
 * pose landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/pose-landmarker/" target="_blank">DEMO</a>
 
-## Experimental
+## Experimental Examples
+* Holistic landmark detection: <a href="https://tetsuakibaba.github.io/p5MediaPipe/holistic/" target="_blank">DEMO</a>
+  * This example is an experimental implementation of Holistic landmarks detection. the mediapipe holistic has a different file and coding configuration because it is different from other tasks.
+  * Because the version is unknown, the latest version is referred to by cdn. If you want to run the software in an offline environment, please set up your own environment.
+![](./holistic/sample.jpg)
+
 * LLM Inference: <a href="https://tetsuakibaba.github.io/p5MediaPipe/LLM/" target="_blank">DEMO</a>
   * This example is an experimental implementation of LLM Inference. The model such as gemma-1.1-2b-it-gpu-int4.bin (https://www.kaggle.com/models/google/gemma/tfLite/gemma-1.1-2b-it-gpu-int4),  is not included in the project file, so you need to download the model from the official site and load it.
 ![](./LLM/sample.png)

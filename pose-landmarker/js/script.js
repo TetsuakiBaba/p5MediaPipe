@@ -23,10 +23,12 @@ const createPoseLandmarker = async () => {
     poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
         baseOptions: {
             modelAssetPath: `./models/pose_landmarker_lite.task`,
-            delegate: "GPU"
+            delegate: "GPU",
+            upperBodyOnly: true,
+            smoothLandmarks: true
         },
         runningMode: runningMode,
-        numPoses: 2
+        numPoses: 1
     });
     document.querySelector('#button_webcam').disabled = false;
     document.querySelector('#button_webcam').innerHTML = "Enable Webcam";
