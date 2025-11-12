@@ -16,12 +16,24 @@ function startWebcam() {
   // If the function setCameraStreamToMediaPipe is defined in the window object, the camera stream is set to MediaPipe.
   if (window.setCameraStreamToMediaPipe) {
     cam = createCapture(VIDEO);
+    cam.size(640, 480);
     cam.hide();
     cam.elt.onloadedmetadata = function () {
       window.setCameraStreamToMediaPipe(cam.elt);
+      // getCapability() shows the camera's capabilities
+      const track = cam.elt.srcObject.getVideoTracks()[0];
+      const capabilities = track.getCapabilities();
+      console.log(capabilities);
+
+      // getSettings() shows the camera's current settings
+      console.log(track.getSettings());
     }
     p5canvas.style('width', '100%');
     p5canvas.style('height', 'auto');
+    // getCapability()を使ってカメラの設定を取得
+    // const track = cam.elt.srcObject.getVideoTracks()[0];
+
+
   }
 }
 
